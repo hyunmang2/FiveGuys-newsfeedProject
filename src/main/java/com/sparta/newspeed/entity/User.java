@@ -5,9 +5,7 @@ import com.sparta.newspeed.dto.ProfileReqDto;
 import com.sparta.newspeed.dto.SignupReqDto;
 import com.sparta.newspeed.dto.UserReqDto;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -17,7 +15,9 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name="user")
 public class User extends Timestamped {
     @Id
@@ -49,7 +49,6 @@ public class User extends Timestamped {
 
     @OneToMany(mappedBy="user")
     private List<Likes> likesList = new ArrayList<>();
-
 
 
     public void setRefreshToken(String refreshToken) {
